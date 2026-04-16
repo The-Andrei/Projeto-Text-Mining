@@ -6,11 +6,10 @@ def main():
     #Ler ambos csv (Fake_News) 
     df_true = pd.read_csv('data/True.csv')
     df_false = pd.read_csv('data/Fake.csv')
-    
-    # Limpar os pontos e vírgulas a mais nas colunas do True.csv ('date;;;;;;;;;;;;;;' passa a 'date')
-    df_true.columns = df_true.columns.str.replace(';', '')
 
     print(df_true.head())
+
+    print(df_false.head())
 
     #classe -> se 0, então a notícia é verdadeira; se 1, então a notícia é fake
     #vamos adicionar coluna classe
@@ -33,6 +32,7 @@ def main():
     # y é o que queres prever (target/label)
     X = df_merged.drop('classe', axis=1) 
     y = df_merged['classe']
+
     # Divide os dados (80% treino, 20% teste)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
